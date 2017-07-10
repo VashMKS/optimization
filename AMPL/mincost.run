@@ -1,0 +1,9 @@
+reset;
+model mincost.mod;
+#data mincost15.dat;
+data mincost21.dat;
+solve;
+printf('El camí mínim és:\n');
+display x;
+printf('I té cost:\n');
+display total_cost;

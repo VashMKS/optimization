@@ -1,0 +1,51 @@
+param n := 6;	# Nodes
+param m := 12;	# Arcs
+
+# Capacitats de les arestes
+param capacity :=
+1  3
+2  3
+3  2
+4  4
+5  4
+6  4
+7  1
+8  2
+9  3
+10 3
+11 1
+12 2;
+
+# Cost per unitat de flux en cada aresta
+param cost :=
+1  1
+2  5
+3  1
+4  2
+5  3
+6  4
+7  1
+8  5
+9  1
+10 3
+11 2
+12 3;
+
+# Flux imposat al circuit
+param dif :=
+1  1
+2  0
+3  0
+4  0
+5  0
+6 -1;
+
+# Matriu d'incidències nodes-arcs
+param A[*,*]
+:  1  2  3  4  5  6  7  8  9  10  11  12 :=
+1  1  1  1  0  0  0  0  0  0   0   0   1
+2  0  0 -1  0  0  0  0  0  1   1   1   0
+3  0 -1  0  1  1  0  0  0  0   0   0   0
+4 -1  0  0  0 -1  1  1  0 -1   0   0   0
+5  0  0  0 -1  0  0 -1  1  0  -1   0  -1
+6  0  0  0  0  0 -1  0 -1  0   0  -1   0;

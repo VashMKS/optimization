@@ -1,0 +1,6 @@
+reset;
+model maxflow.mod;
+data maxflow15.dat;
+#data maxflow21.dat;
+solve;
+display x[m];
