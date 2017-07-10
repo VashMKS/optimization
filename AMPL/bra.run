@@ -1,0 +1,21 @@
+reset;
+option minos_options 'superbasics_limit = 1000';
+model bra2.mod;
+data bra.dat;
+solve;
+
+printf "Instruccions per a gràfica en Matlab o Octave:\n";
+
+printf "x = [";
+for{k in N} {
+	printf "%f ", x[k];
+}
+printf "]\n";
+
+printf "y = [";
+for{k in N} {
+	printf "%f ", y[k];
+}
+printf "]\n";
+
+printf "plot(x,-y)\n";

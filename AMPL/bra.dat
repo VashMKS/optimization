@@ -1,0 +1,3 @@
+param n := 100;
+param a := 1;
+param b := 100;
