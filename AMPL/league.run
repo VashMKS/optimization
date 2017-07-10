@@ -1,0 +1,45 @@
+reset;
+model league.mod;
+data league.dat;
+solve;
+
+printf "\n";
+printf "x(i,j,k) resultant:\n";
+for{i in TEAMS} {
+	printf "--"
+}
+printf "-------\n";
+for{k in ROUNDS} {
+		printf "Jornada %d:\n", k;
+		printf "equips ";
+		for{i in TEAMS} {
+				printf " %d", i;
+		}
+		printf "\n";
+		for{i in TEAMS} {
+				if i > 9 then printf "   %d  ", i;
+				if i <= 9 then printf "   %d   ", i;
+				for{j in TEAMS} {
+						if i < j && j > 9 then printf "  %d", x[i,j,k];
+						if i < j && j <= 9 then printf " %d", x[i,j,k];
+						if i >= j && j > 9 then printf "  ·";
+						if i >= j && j <= 9 then printf " ·";
+				}
+				printf "\n";
+		}
+		for{i in TEAMS} {
+			printf "--"
+		}
+		printf "-------\n";
+}
+
+printf "\n";
+printf "CALENDARI\n";
+for{k in ROUNDS} {
+		printf "Jornada %d:\n", k;
+		for{i in TEAMS} {
+				for{j in TEAMS : i < j} {
+						if x[i,j,k] = 1 then printf "%d vs %d\n", i,j;
+				}
+		}
+}
